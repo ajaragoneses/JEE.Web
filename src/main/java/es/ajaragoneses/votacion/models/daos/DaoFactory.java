@@ -1,7 +1,7 @@
 package es.ajaragoneses.votacion.models.daos;
 
-import es.ajaragoneses.votacion.Models.Daos.TemaDao;
-import es.ajaragoneses.votacion.Models.Daos.VotoDao;
+import es.ajaragoneses.votacion.models.daos.TemaDao;
+import es.ajaragoneses.votacion.models.daos.VotoDao;
 
 public abstract class DaoFactory {
 
