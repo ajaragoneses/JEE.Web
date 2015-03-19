@@ -1,4 +1,5 @@
-package es.ajaragoneses.votacion.controllers.beans;
+package es.ajaragoneses.votacion.controllers;
+
 
 import java.io.IOException;
 
