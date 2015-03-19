@@ -1,4 +1,4 @@
-package es.ajaragoneses.votaciones.models.daos.JPA;
+package es.ajaragoneses.votacion.models.daos.JPA;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

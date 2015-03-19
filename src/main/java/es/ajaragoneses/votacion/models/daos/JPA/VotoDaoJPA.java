@@ -1,4 +1,4 @@
-package es.ajaragoneses.votaciones.models.daos.JPA;
+package es.ajaragoneses.votacion.models.daos.JPA;
 
 import es.ajaragoneses.votacion.models.daos.VotoDao;
 import es.ajaragoneses.votacion.models.entities.Voto;
