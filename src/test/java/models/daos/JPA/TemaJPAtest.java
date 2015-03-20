@@ -1,3 +1,4 @@
+package models.daos.JPA;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
