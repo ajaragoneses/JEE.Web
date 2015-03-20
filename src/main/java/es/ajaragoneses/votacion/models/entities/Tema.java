@@ -10,7 +10,6 @@ import javax.persistence.*;
  *
  */
 @Entity
-
 public class Tema implements Serializable {
 
 	
@@ -37,6 +36,15 @@ public class Tema implements Serializable {
 		this.nombreTema = nombreTema;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
 	public String getPregunta() {
 		return pregunta;
 	}

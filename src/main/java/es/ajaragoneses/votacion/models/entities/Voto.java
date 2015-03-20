@@ -1,6 +1,6 @@
 package es.ajaragoneses.votacion.models.entities;
 
-import es.ajaragoneses.votacion.Models.Utils.*;
+import es.ajaragoneses.votacion.models.utils.NivelEstudios;
 
 import java.io.Serializable;
 

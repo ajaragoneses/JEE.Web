@@ -40,7 +40,7 @@
 			<var>msgs</var>
 		</resource-bundle>
 	</application>
-    <lifecycle>
-        <phase-listener>es.art83.web.jsf.MyPhaseListener</phase-listener>
-    </lifecycle>
+<!--     <lifecycle> -->
+<!--         <phase-listener>es.art83.web.jsf.MyPhaseListener</phase-listener> -->
+<!--     </lifecycle> -->
 </faces-config>
