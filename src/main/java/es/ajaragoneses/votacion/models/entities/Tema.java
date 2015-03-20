@@ -23,7 +23,7 @@ public class Tema implements Serializable {
 	
 	private String nombreTema;
 	
-    @OneToMany(cascade = CascadeType.REMOVE)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Voto> listaVotos;
 	
 	public Tema() {

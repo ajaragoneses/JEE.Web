@@ -8,7 +8,7 @@ import es.ajaragoneses.votacion.models.daos.TemaDao;
 import es.ajaragoneses.votacion.models.daos.VotoDao;
 
 public class DaoJPAFactory extends DaoFactory{
-    private static final String PERSISTENCE_UNIT = "SistemaVotacion";
+    private static final String PERSISTENCE_UNIT = "miwjee";
 
     private static EntityManagerFactory entityManagerFactory = Persistence
             .createEntityManagerFactory(PERSISTENCE_UNIT);
