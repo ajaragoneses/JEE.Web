@@ -1,9 +1,15 @@
 package es.ajaragoneses.votacion.models.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.persistence.*;
+
+import es.ajaragoneses.votacion.models.utils.NivelEstudios;
 
 /**
  * Entity implementation class for Entity: Tema
@@ -29,7 +35,24 @@ public class Tema implements Serializable {
 	public Tema() {
 	}
 	
-
+	public List<String> mediaVotos(){
+		Map<NivelEstudios, Integer> map = new HashMap<NivelEstudios,Integer>();
+		for(NivelEstudios n : NivelEstudios.values()){
+			map.put(n, 0);
+		}
+		for(Voto voto : listaVotos){
+			Integer i = map.get(voto.getNivelEstudios());
+			map.put(voto.getNivelEstudios(), voto.getValor()/(i.intValue() + 1));
+		}
+		List<String> list = new ArrayList<String>();
+		for(Entry<NivelEstudios, Integer> entry : map.entrySet()) {
+		    NivelEstudios key = entry.getKey();
+		    Integer value = entry.getValue();
+		    list.add(key.toString() + " : " + value.floatValue());
+		}
+		return list;
+	}
+	
 	public Tema(String pregunta, String nombreTema) {
 		super();
 		this.pregunta = pregunta;
