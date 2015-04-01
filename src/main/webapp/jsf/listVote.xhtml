@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      >
+    <h:head>
+    	<h:outputStylesheet library="css" name="table-style.css"  />
+    </h:head>
+    <h:body>
+ 
+    	<h1>Lista de Votaciones</h1>
+ 
+    	<table class="order-table">
+    		<tr>
+    			<th class="order-table-header">Tema</th>
+    			<th class="order-table-header">Pregunta</th>
+    			<th class="order-table-header">nº de votaciones</th>
+    			<th class="order-table-header">Votacion media</th>
+    		</tr>
+    		<tbody>
+	    		<ui:repeat var="o" value="#{ListVoteView.tema}" varStatus="status">
+	    			<h:panelGroup rendered="#{status.even}">
+	   			  <tr>
+		    			<td class="order-table-even-row">#{o.orderNo}</td>
+		    			<td class="order-table-even-row">#{o.productName}</td>
+		    			<td class="order-table-even-row">#{o.price}</td>
+		    			<td class="order-table-even-row">#{o.qty}</td>
+		    		  </tr>
+	    			</h:panelGroup>
+	    		        <h:panelGroup rendered="#{status.odd}">
+	    			  <tr>
+		    			<td class="order-table-odd-row">#{o.orderNo}</td>
+		    			<td class="order-table-odd-row">#{o.productName}</td>
+		    			<td class="order-table-odd-row">#{o.price}</td>
+		    			<td class="order-table-odd-row">#{o.qty}</td>
+		    		  </tr>
+	    			</h:panelGroup>
+	    		</ui:repeat>
+    		</tbody>
+    	</table>
+    </h:body>
+</html>
