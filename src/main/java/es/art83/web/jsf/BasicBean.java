@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 @ManagedBean
+@SessionScoped
 public class BasicBean {
     private String name = "Soy Bean";
 
@@ -18,8 +20,18 @@ public class BasicBean {
     private Map<String, String> map = new HashMap<String, String>();
 
     private Entity entity = new Entity();
+    
+    private String selectedItemArray = "";
 
-    public BasicBean() {
+    public String getSelectedItemArray() {
+		return selectedItemArray;
+	}
+
+	public void setSelectedItemArray(String selectedItemArray) {
+		this.selectedItemArray = selectedItemArray;
+	}
+
+	public BasicBean() {
         this.list.add("cero");
         this.list.add("uno");
         this.map.put("cero", "0");
@@ -35,6 +47,7 @@ public class BasicBean {
     }
 
     public String process() {
+    	System.out.println("poipoipoi");
         return null;
     }
 

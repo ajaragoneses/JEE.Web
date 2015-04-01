@@ -10,7 +10,11 @@
 	<h3>JSF 2</h3>
 	<h:form id="f1">
 		<p>Name:<h:inputText id="name" value="#{basicBean.name}" /></p>
-		<p>Name: #{basicBean.name}</p>
+		<p>Name: #{basicBean.name}</p>		
+		<p>Elemento del Array: #{basicBean.selectedItemArray} </p>
+		<h:selectOneMenu value="#{basicBean.selectedItemArray}">
+			<f:selectItems value="#{basicBean.array}"/>
+		</h:selectOneMenu>
 		<p>Array[1]: #{basicBean.array[1]}</p>
 		<p>List[1]: #{basicBean.list[1]}</p>
 		<p>Map["uno"]: #{basicBean.map.uno}</p>

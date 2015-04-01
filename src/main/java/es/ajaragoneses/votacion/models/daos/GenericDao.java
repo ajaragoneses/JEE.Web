@@ -1,5 +1,7 @@
 package es.ajaragoneses.votacion.models.daos;
 
+import java.util.List;
+
 public interface GenericDao<T, ID> {
 
     void create(T entity);
@@ -10,4 +12,6 @@ public interface GenericDao<T, ID> {
 
     void deleteById(ID id);
 
+    public List<T> findAll();
+    
 }
