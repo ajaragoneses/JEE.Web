@@ -16,8 +16,8 @@ import es.ajaragoneses.votacion.models.daos.DaoFactory;
 import es.ajaragoneses.votacion.models.daos.TemaDao;
 import es.ajaragoneses.votacion.models.daos.JPA.DaoJPAFactory;
 import es.ajaragoneses.votacion.models.entities.Tema;
+import es.ajaragoneses.votacion.models.entities.Voto;
 import es.ajaragoneses.votacion.models.utils.NivelEstudios;
-import es.art83.web.servlets.HelloServlet;
 
 @ManagedBean
 @ViewScoped
@@ -218,12 +218,27 @@ public class VoteView implements Serializable {
 	
 	public String process(){
 		if(AllFieldsNotNUll()){
-		log.info("voto: " + voto + " pregunta: " + pregunta);
-		log.info("Procesando...");
+			log.info("Procesando...");
+			Voto votoObject = new Voto(voto, Ip, nivelEstudios);
+			
+			List<Tema> listaObjetosTema = temaDao.findAll();
+			log.info(listaObjetosTema.size());
+			
+			assert(listaObjetosTema.size() == 0);
+			
+			for (int i = 0; i < listaObjetosTema.size(); i++) {
+				log.info(listaObjetosTema.get(i).getNombreTema());
+				if(!listaObjetosTema.get(i).getNombreTema().equals(Tema)) continue;
+				if(!listaObjetosTema.get(i).getPregunta().equals(pregunta)) continue;
+				listaObjetosTema.get(i).getListaVotos().add(votoObject);
+				temaDao.update(listaObjetosTema.get(i));
+				break;
+	        }
+			
 		}
 		return null;
 	}
-
+	
 	private boolean AllFieldsNotNUll() {
 		if(voto < 0) return false;
 		if(Tema.equals("")) return false;
