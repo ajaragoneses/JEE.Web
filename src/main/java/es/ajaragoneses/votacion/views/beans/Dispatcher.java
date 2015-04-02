@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import es.ajaragoneses.votacion.models.utils.NivelEstudios;
+
 
 @WebServlet("/votacion/*")
 public class Dispatcher extends HttpServlet {
@@ -20,15 +22,15 @@ public class Dispatcher extends HttpServlet {
             throws ServletException, IOException {
 
         String action = request.getPathInfo().substring(1);
-
+        System.out.println("doGet");
         String view;
         switch (action) {
-//        case "persona":
-//            PersonaView personaView = new PersonaView();
-//            personaView.setPersona(new Persona());
-//            request.setAttribute(action, personaView);
-//            view = action;
-//            break;
+        case "vote":
+            VoteView voteView = new VoteView();
+            voteView.setIp(request.getRemoteAddr());
+            request.setAttribute(action, voteView);
+            view = action;
+            break;
 //        case "rol":
 //            RolView rolView = new RolView();
 //            request.setAttribute(action, rolView);
@@ -46,10 +48,17 @@ public class Dispatcher extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	System.out.println("doPost");
         String action = request.getPathInfo().substring(1);
         String view = "home";
         switch (action) {
-//        case "persona":
+        case "vote":
+        	VoteView voto = new VoteView();
+        	System.out.println(NivelEstudios.valueOf(request.getParameter("nivelEstudios")));
+        	voto.setIp(request.getRemoteAddr());
+        	voto.setNivelEstudios(NivelEstudios.valueOf(request.getParameter("nivelEstudios")));
+        	voto.setVoto(Integer.parseInt(request.getParameter("voto")));
+        	voto.process(Integer.parseInt(request.getParameter("pregunta")));
 //            Persona persona = new Persona();
 //            persona.setId(Integer.valueOf(request.getParameter("id")));
 //            persona.setNombre(request.getParameter("nombre"));
@@ -58,7 +67,7 @@ public class Dispatcher extends HttpServlet {
 //            personaView.setPersona(persona);
 //            request.setAttribute(action, personaView);
 //            view = personaView.process();
-//            break;
+            break;
 //        case "rol":
 //            RolView rolView = new RolView();
 //            rolView.setRol(request.getParameter("rol"));

@@ -9,7 +9,7 @@
 <body>
 	<h1>Votación JSP</h1>
 	<p>
-		<a href="/Web/votacion/voto">Votar</a>
+		<a href="/Web/votacion/vote">Votar</a>
 	</p>
 	<p>
 		<a href="/Web/votacion/listaVotos">Lista de Votos</a>

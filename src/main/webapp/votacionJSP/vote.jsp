@@ -8,32 +8,33 @@
 	<title>Votar un Tema</title>
 </head>
 <body>
-	<c:set var="voteView" scope="request" value="${voteView}" />
+	<c:set var="voteView" scope="request" value="${vote}" />
 	<h3>JSF 2</h3>
 	<p>IP: ${voteView.ip}</p>
-	<form>
-<%-- 		<selectOneMenu id="tema" value="${voteView.tema}"> --%>
-<%-- 			<selectItems value="${voteView.listaTemasString}" /> --%>
-<!-- 		</selectOneMenu> -->
-<!-- 		<br /> -->
-<!-- 		<select id="pregunta"> -->
-<%-- 		<c:forEach items="${voteView.listaPreguntas}" var="tema"> --%>
-<!-- 			<option value="tema.pregunta" /></option> -->
-<%-- 		</c:forEach>	 --%>
-<!-- 		</select> -->
-		
-<!-- 		<br /> -->
-<%-- 		<selectOneMenu id="voto" value="${voteView.voto}" rendered="${voteView.temaElegido}"> --%>
-<%-- 			<selectItems value="${voteView.listaVotos}" /> --%>
-<!-- 		</selectOneMenu> -->
-		
-<!-- 		<br /> -->
-<%-- 		<selectOneMenu id="nivelEstudios" value="${voteView.nivelEstudios}" rendered="${voteView.temaElegido}"> --%>
-<%-- 			<selectItems value="${voteView.listaNivelEstudios}" /> --%>
-<!-- 		</selectOneMenu> -->
-<!-- 		<br /> -->
-		<commandButton id="submit" value="submit" type="submit"
-			 action="${voteView.process()}" />
+	<form action="/Web/votacion/vote" method="POST">
+		<br />
+		<p>Pregunta a votar: </p>
+		<select name="pregunta">
+		<c:forEach items="${voteView.listaTemasObj}" var="tema">
+			<option value="${tema.id}" />${tema.nombreTema} - ${tema.pregunta}</option>
+		</c:forEach>	
+		</select>
+		<br />
+		<p>Nivel de estudios: </p>
+		<select name="nivelEstudios">
+		<c:forEach items="${voteView.listaNivelEstudios}" var="nivel">
+			<option value="${nivel}" />${nivel}</option>
+		</c:forEach>	
+		</select>
+		<br />
+		<p>Voto: </p>
+		<select name="voto">
+		<c:forEach items="${voteView.listaVotos}" var="voto">
+			<option value="${voto}" />${voto}</option>
+		</c:forEach>	
+		</select>
+		<br />
+		<input  id="submit" value="submit" type="submit"/>
 	</form>
 </body>
 </html>

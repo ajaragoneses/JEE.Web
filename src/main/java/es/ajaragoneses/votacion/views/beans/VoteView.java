@@ -25,107 +25,33 @@ public class VoteView implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int voto = -1;
 	private int[] listaVotos;
-	private String pregunta = "";
-    private List<String> listaPreguntas;
+    private List<Tema> listaTemasObj;
     private String Ip = "";
 	private TemaDao temaDao;
 	private List<String> listaTemasString;
 	private NivelEstudios nivelEstudios = null;
-	private boolean temaElegido = false;
-	private String Tema = "";
-	private List<String> listaTemas;
 	private NivelEstudios[] listaNivelEstudios;	
 	private Logger log = LogManager.getLogger(VoteView.class);
 	
 	
-	public String getPregunta() {
-		return pregunta;
-	}
 
-	public void setPregunta(String pregunta) {
-		this.pregunta = pregunta;
-	}
-
-	public List<String> getListaPreguntas() {
-		return listaPreguntas;
-	}
-
-	public void setListaPreguntas(List<String> listaPreguntas) {
-		this.listaPreguntas = listaPreguntas;
-	}
-
-	public String getTema() {
-		return Tema;
-	}
-
-	public void setTema(String tema) {
-		temaElegido = true;
-		preparePreguntasList();
-		Tema = tema;
-	}
-
-	private void preparePreguntasList() {
-		List<Tema> listaObjetosTema = temaDao.findAll();
-		log.info(listaObjetosTema.size());
-		listaPreguntas = new ArrayList<String>();
-		
-		assert(listaObjetosTema.size() == 0);
-		
-		for (int i = 0; i < listaObjetosTema.size(); i++) {
-			if(listaObjetosTema.get(i).getNombreTema().equals(Tema)){
-				log.info(listaObjetosTema.get(i).getPregunta());
-				listaPreguntas.add(listaObjetosTema.get(i).getPregunta());
-			}
-        }
-		
-	}
-
-	public List<String> getListaTemas() {
-		return listaTemas;
-	}
-
-	public void setListaTemas(List<String> listaTemas) {
-		this.listaTemas = listaTemas;
-	}
-
-	
-	
-	public boolean isTemaElegido() {
-		return temaElegido;
-	}
-
-	public void setTemaElegido(boolean temaElegido) {
-		this.temaElegido = temaElegido;
-	}
-
-
-    
-    
 	public VoteView(){
 		DaoFactory.setFactory(new DaoJPAFactory());
 		temaDao = DaoFactory.getFactory().getTemaDao();
 		
-		List<Tema> listaObjetosTema = temaDao.findAll();
-		log.info(listaObjetosTema.size());
-		listaTemasString = new ArrayList<String>();
+		listaTemasObj = temaDao.findAll();
+		log.info(listaTemasObj.size());
 		
-		assert(listaObjetosTema.size() == 0);
+		assert(listaTemasObj.size() == 0);
 		
-		for (int i = 0; i < listaObjetosTema.size(); i++) {
-			log.info(listaObjetosTema.get(i).getNombreTema());
-			listaTemasString.add(listaObjetosTema.get(i).getNombreTema());
-        }
-		
-		listaVotos = new int[10];
+		listaVotos = new int[11];
         for (int i = 0; i < listaVotos.length; i++) {
         	listaVotos[i] = i;
         }
         
         listaNivelEstudios = NivelEstudios.values();
         
-        HttpServletRequest httpServletRequest = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-        Ip = httpServletRequest.getRemoteAddr();
-	}
+     	}
 	
 	public int getVoto() {
 		return voto;
@@ -143,13 +69,6 @@ public class VoteView implements Serializable {
 		this.listaVotos = listaVotos;
 	}
 
-	public List<String> getlistaPreguntas() {
-		return listaPreguntas;
-	}
-
-	public void setlistaPreguntas(List<String> listaPreguntas) {
-		this.listaPreguntas = listaPreguntas;
-	}
 
 	public TemaDao getTemaDao() {
 		return temaDao;
@@ -208,32 +127,18 @@ public class VoteView implements Serializable {
 		this.voto = voto;
 	}
 
-	public String getpregunta() {
-		return pregunta;
-	}
-
-	public void setpregunta(String pregunta) {
-		this.pregunta = pregunta;
-	}
 	
-	public String process(){
+	public String process(int temaId){
 		if(AllFieldsNotNUll()){
 			log.info("Procesando...");
 			Voto votoObject = new Voto(voto, Ip, nivelEstudios);
 			
+			Tema tema = temaDao.read(temaId);
+			tema.getListaVotos().add(votoObject);
+			temaDao.update(tema);
+			
 			List<Tema> listaObjetosTema = temaDao.findAll();
 			log.info(listaObjetosTema.size());
-			
-			assert(listaObjetosTema.size() == 0);
-			
-			for (int i = 0; i < listaObjetosTema.size(); i++) {
-				log.info(listaObjetosTema.get(i).getNombreTema());
-				if(!listaObjetosTema.get(i).getNombreTema().equals(Tema)) continue;
-				if(!listaObjetosTema.get(i).getPregunta().equals(pregunta)) continue;
-				listaObjetosTema.get(i).getListaVotos().add(votoObject);
-				temaDao.update(listaObjetosTema.get(i));
-				break;
-	        }
 			
 		}
 		return null;
@@ -241,10 +146,16 @@ public class VoteView implements Serializable {
 	
 	private boolean AllFieldsNotNUll() {
 		if(voto < 0) return false;
-		if(Tema.equals("")) return false;
 		if(Ip.equals("")) return false;
 		if(nivelEstudios == null) return false;
-		if(pregunta.equals("")) return false;
 		return true;
+	}
+
+	public List<Tema> getListaTemasObj() {
+		return listaTemasObj;
+	}
+
+	public void setListaTemasObj(List<Tema> listaTemasObj) {
+		this.listaTemasObj = listaTemasObj;
 	}
 }
