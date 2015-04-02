@@ -23,7 +23,7 @@ public class AddTemaView implements Serializable{
 	private String NombreTema = "";
 	private String Pregunta = "";
 	
-	private Logger log = LogManager.getLogger(VoteView.class);
+	private Logger log = LogManager.getLogger(AddTemaView.class);
 
 	public AddTemaView(){
 		DaoFactory.setFactory(new DaoJPAFactory());

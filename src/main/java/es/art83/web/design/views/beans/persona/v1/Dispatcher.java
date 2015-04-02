@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import es.art83.web.design.models.entities.persona.v1.Persona;
+import es.art83.web.design.views.beans.persona.v1.PersonaView;
+import es.art83.web.design.views.beans.persona.v1.RolView;
 
 @WebServlet("/v1/*")
 public class Dispatcher extends HttpServlet {

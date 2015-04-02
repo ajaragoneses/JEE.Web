@@ -9,16 +9,19 @@
 <body>
 	<h1>Votación JSP</h1>
 	<p>
-		<a href="/Web/votacionJSP/voto">Votar</a>
+		<a href="/Web/votacion/voto">Votar</a>
 	</p>
 	<p>
-		<a href="/Web/votacionJSP/listaVotos">Lista de Votos</a>
+		<a href="/Web/votacion/listaVotos">Lista de Votos</a>
 	</p>
 	<p>
-		<a href="/Web/votacionJSP/delete">Eliminar un Tema</a>
+		<a href="/Web/votacion/delete">Eliminar un Tema</a>
 	</p>
 	<p>
-		<a href="/Web/votacionJSP/add">Añadir un tema</a>
+		<a href="/Web/votacionP/add">Añadir un tema</a>
+	</p>
+		<p>
+		<a href="/Web/votacion/home">home</a>
 	</p>
 </body>
 </html>
