@@ -11,8 +11,14 @@
 		<h:inputText id="code" value="#{deleteTemaView.code}" />
 		<br />
 		
-		
-		
+		<h:selectOneMenu value="#{deleteTemaView.temaId}" rendered="#{deleteTemaView.autorizado}" >
+			<f:selectItems value="#{deleteTemaView.listaTemas}" var="theme"
+			itemValue="#{theme.id}" itemLabel="#{theme.pregunta}" />
+		</h:selectOneMenu>
+		<br />
+		<h:outputText value="El identificador de autorización no es válido" rendered="#{deleteTemaView.mostrarMensajeError}"/>
+		<h:outputText value="Elemento borrado correctamente" rendered="#{deleteTemaView.mostrarMensajeBorrado}"/>
+		<br />
 		<h:commandButton id="submit" value="submit" type="submit"
 			 action="#{deleteTemaView.process()}" />
 	</h:form>
