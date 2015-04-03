@@ -1,21 +1,15 @@
 package es.ajaragoneses.votacion.views.beans;
 
 import java.io.Serializable;
-
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import es.ajaragoneses.votacion.models.daos.DaoFactory;
 import es.ajaragoneses.votacion.models.daos.TemaDao;
 import es.ajaragoneses.votacion.models.daos.JPA.DaoJPAFactory;
 import es.ajaragoneses.votacion.models.entities.Tema;
 
 
-@ManagedBean
-@ViewScoped
+
 public class AddTemaView implements Serializable{
 
 	private static final long serialVersionUID = 1L;
