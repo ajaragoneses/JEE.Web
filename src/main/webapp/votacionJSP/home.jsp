@@ -12,7 +12,7 @@
 		<a href="/Web/votacion/vote">Votar</a>
 	</p>
 	<p>
-		<a href="/Web/votacion/listaVotos">Lista de Votos</a>
+		<a href="/Web/votacion/listVote">Lista de Votos</a>
 	</p>
 	<p>
 		<a href="/Web/votacion/delete">Eliminar un Tema</a>
