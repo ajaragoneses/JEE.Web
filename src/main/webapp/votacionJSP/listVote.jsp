@@ -24,7 +24,8 @@
    			<th>Votacion media</th>
    		</tr>
    		<tbody>
-   		<c:forEach var="o" items="${listVoteView.listaTemas}" >			
+   		
+   		<c:forEach var="o" items="${listVote.listaTemas}" >			
 		  <tr>
 			<td>${o.nombreTema}</td>
 			<td>${o.pregunta}</td>
