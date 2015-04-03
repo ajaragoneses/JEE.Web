@@ -31,11 +31,11 @@ public class Dispatcher extends HttpServlet {
             request.setAttribute(action, voteView);
             view = action;
             break;
-//        case "rol":
-//            RolView rolView = new RolView();
-//            request.setAttribute(action, rolView);
-//            view = action;
-//            break;
+        case "listVote":
+        	ListVoteView listVoteView = new ListVoteView();
+        	request.setAttribute(action, listVoteView);
+        	view = action;
+            break;
         default:
             view = "home";
         }
@@ -59,21 +59,9 @@ public class Dispatcher extends HttpServlet {
         	voto.setNivelEstudios(NivelEstudios.valueOf(request.getParameter("nivelEstudios")));
         	voto.setVoto(Integer.parseInt(request.getParameter("voto")));
         	voto.process(Integer.parseInt(request.getParameter("pregunta")));
-//            Persona persona = new Persona();
-//            persona.setId(Integer.valueOf(request.getParameter("id")));
-//            persona.setNombre(request.getParameter("nombre"));
-//            persona.setRol(request.getParameter("rol"));
-//            PersonaView personaView = new PersonaView();
-//            personaView.setPersona(persona);
-//            request.setAttribute(action, personaView);
-//            view = personaView.process();
             break;
-//        case "rol":
-//            RolView rolView = new RolView();
-//            rolView.setRol(request.getParameter("rol"));
-//            request.setAttribute(action, rolView);
-//            view = rolView.process();
-//            break;
+        case "listaVotos":
+            break;
         }
 
         this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")

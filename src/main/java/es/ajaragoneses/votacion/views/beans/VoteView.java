@@ -1,17 +1,9 @@
 package es.ajaragoneses.votacion.views.beans;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import es.ajaragoneses.votacion.models.daos.DaoFactory;
 import es.ajaragoneses.votacion.models.daos.TemaDao;
 import es.ajaragoneses.votacion.models.daos.JPA.DaoJPAFactory;
@@ -19,8 +11,7 @@ import es.ajaragoneses.votacion.models.entities.Tema;
 import es.ajaragoneses.votacion.models.entities.Voto;
 import es.ajaragoneses.votacion.models.utils.NivelEstudios;
 
-@ManagedBean
-@ViewScoped
+
 public class VoteView implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int voto = -1;
