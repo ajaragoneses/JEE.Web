@@ -15,7 +15,7 @@
 		<a href="/Web/votacion/listVote">Lista de Votos</a>
 	</p>
 	<p>
-		<a href="/Web/votacion/delete">Eliminar un Tema</a>
+		<a href="/Web/votacion/deleteTema">Eliminar un Tema</a>
 	</p>
 	<p>
 		<a href="/Web/votacion/addTema">Añadir un tema</a>

@@ -41,6 +41,11 @@ public class Dispatcher extends HttpServlet {
         	request.setAttribute(action, addTemaView);
         	view = action;
         	break;
+        case "deleteTema":
+        	DeleteTemaView deleteTemaView = new DeleteTemaView();
+        	request.setAttribute(action, deleteTemaView);
+        	view = action;
+        	break;	
         default:
             view = "home";
         }
@@ -73,6 +78,14 @@ public class Dispatcher extends HttpServlet {
         	addTemaView.setNombreTema(request.getParameter("temaName"));
         	addTemaView.setPregunta(request.getParameter("pregunta"));
         	addTemaView.process();
+        	break;
+        case "deleteTema":
+        	DeleteTemaView deleteTemaView = new DeleteTemaView();
+        	deleteTemaView.setCode(Integer.parseInt(request.getParameter("code")));
+        	deleteTemaView.setTemaId(Integer.parseInt(request.getParameter("tema")));
+        	deleteTemaView.process();
+        	request.setAttribute(action, deleteTemaView);
+        	view = action;
         	break;
         }
 
