@@ -18,7 +18,7 @@
 		<a href="/Web/votacion/delete">Eliminar un Tema</a>
 	</p>
 	<p>
-		<a href="/Web/votacionP/add">Añadir un tema</a>
+		<a href="/Web/votacion/addTema">Añadir un tema</a>
 	</p>
 		<p>
 		<a href="/Web/votacion/home">home</a>

@@ -36,6 +36,11 @@ public class Dispatcher extends HttpServlet {
         	request.setAttribute(action, listVoteView);
         	view = action;
             break;
+        case "addTema":
+        	AddTemaView addTemaView = new AddTemaView();
+        	request.setAttribute(action, addTemaView);
+        	view = action;
+        	break;
         default:
             view = "home";
         }
@@ -62,6 +67,13 @@ public class Dispatcher extends HttpServlet {
             break;
         case "listaVotos":
             break;
+        case "addTema":
+        	System.out.println("<addTema>");
+        	AddTemaView addTemaView = new AddTemaView();
+        	addTemaView.setNombreTema(request.getParameter("temaName"));
+        	addTemaView.setPregunta(request.getParameter("pregunta"));
+        	addTemaView.process();
+        	break;
         }
 
         this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
